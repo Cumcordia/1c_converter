@@ -131,12 +131,6 @@ namespace WinFormsApp1
 
         private void button1_Click(object sender, EventArgs e)
         {
-            DialogResult result = folderBrowserDialog1.ShowDialog();
-
-            if (result == DialogResult.OK)
-            {
-                folderName = folderBrowserDialog1.SelectedPath;
-            }
         }
 
         private void button2_Click(object sender, EventArgs e)
