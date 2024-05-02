@@ -28,85 +28,92 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button1 = new Button();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
-            richTextBox1 = new RichTextBox();
-            richTextBox2 = new RichTextBox();
-            richTextBox3 = new RichTextBox();
-            button3 = new Button();
-            button4 = new Button();
+            readButton = new Button();
+            inputText = new TextBox();
+            outputText = new TextBox();
+            textBoxFolder = new RichTextBox();
+            textBoxOriginal = new RichTextBox();
+            textBoxResult = new RichTextBox();
+            inputButton = new Button();
+            outputButton = new Button();
             label1 = new Label();
             label2 = new Label();
+            folderBrowserDialog1 = new FolderBrowserDialog();
+            folderBrowserDialog2 = new FolderBrowserDialog();
+            folderBrowserDialog3 = new FolderBrowserDialog();
+            folderBrowserDialog4 = new FolderBrowserDialog();
+            convertButton = new Button();
             SuspendLayout();
             // 
-            // button1
+            // readButton
             // 
-            button1.Location = new Point(12, 95);
-            button1.Name = "button1";
-            button1.Size = new Size(159, 38);
-            button1.TabIndex = 2;
-            button1.Text = "Конвертировать";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
+            readButton.Location = new Point(12, 95);
+            readButton.Name = "readButton";
+            readButton.Size = new Size(159, 38);
+            readButton.TabIndex = 2;
+            readButton.Text = "Прочитать папку";
+            readButton.UseVisualStyleBackColor = true;
+            readButton.Click += readButton_Click;
             // 
-            // textBox1
+            // inputText
             // 
-            textBox1.Location = new Point(12, 19);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(239, 23);
-            textBox1.TabIndex = 4;
-            textBox1.Text = "C:\\";
+            inputText.Location = new Point(12, 19);
+            inputText.Name = "inputText";
+            inputText.Size = new Size(239, 23);
+            inputText.TabIndex = 4;
+            inputText.Text = "C:\\";
             // 
-            // textBox2
+            // outputText
             // 
-            textBox2.Location = new Point(12, 48);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(239, 23);
-            textBox2.TabIndex = 5;
-            textBox2.Text = "C:\\";
+            outputText.Location = new Point(12, 48);
+            outputText.Name = "outputText";
+            outputText.Size = new Size(239, 23);
+            outputText.TabIndex = 5;
+            outputText.Text = "C:\\";
             // 
-            // richTextBox1
+            // textBoxFolder
             // 
-            richTextBox1.Location = new Point(12, 153);
-            richTextBox1.Name = "richTextBox1";
-            richTextBox1.Size = new Size(159, 285);
-            richTextBox1.TabIndex = 6;
-            richTextBox1.Text = "";
+            textBoxFolder.Location = new Point(12, 153);
+            textBoxFolder.Name = "textBoxFolder";
+            textBoxFolder.Size = new Size(159, 285);
+            textBoxFolder.TabIndex = 6;
+            textBoxFolder.Text = "";
             // 
-            // richTextBox2
+            // textBoxOriginal
             // 
-            richTextBox2.Location = new Point(178, 153);
-            richTextBox2.Name = "richTextBox2";
-            richTextBox2.Size = new Size(306, 285);
-            richTextBox2.TabIndex = 7;
-            richTextBox2.Text = "";
+            textBoxOriginal.Location = new Point(178, 153);
+            textBoxOriginal.Name = "textBoxOriginal";
+            textBoxOriginal.Size = new Size(306, 285);
+            textBoxOriginal.TabIndex = 7;
+            textBoxOriginal.Text = "";
             // 
-            // richTextBox3
+            // textBoxResult
             // 
-            richTextBox3.Location = new Point(490, 153);
-            richTextBox3.Name = "richTextBox3";
-            richTextBox3.Size = new Size(298, 285);
-            richTextBox3.TabIndex = 8;
-            richTextBox3.Text = "";
+            textBoxResult.Location = new Point(490, 153);
+            textBoxResult.Name = "textBoxResult";
+            textBoxResult.Size = new Size(298, 285);
+            textBoxResult.TabIndex = 8;
+            textBoxResult.Text = "";
             // 
-            // button3
+            // inputButton
             // 
-            button3.Location = new Point(257, 19);
-            button3.Name = "button3";
-            button3.Size = new Size(25, 23);
-            button3.TabIndex = 9;
-            button3.Text = "Конвертировать";
-            button3.UseVisualStyleBackColor = true;
+            inputButton.Location = new Point(257, 19);
+            inputButton.Name = "inputButton";
+            inputButton.Size = new Size(25, 23);
+            inputButton.TabIndex = 9;
+            inputButton.Text = "Конвертировать";
+            inputButton.UseVisualStyleBackColor = true;
+            inputButton.Click += inputButton_Click;
             // 
-            // button4
+            // outputButton
             // 
-            button4.Location = new Point(257, 48);
-            button4.Name = "button4";
-            button4.Size = new Size(25, 23);
-            button4.TabIndex = 10;
-            button4.Text = "Конвертировать";
-            button4.UseVisualStyleBackColor = true;
+            outputButton.Location = new Point(257, 48);
+            outputButton.Name = "outputButton";
+            outputButton.Size = new Size(25, 23);
+            outputButton.TabIndex = 10;
+            outputButton.Text = "Конвертировать";
+            outputButton.UseVisualStyleBackColor = true;
+            outputButton.Click += outputButton_Click;
             // 
             // label1
             // 
@@ -126,38 +133,54 @@
             label2.TabIndex = 12;
             label2.Text = "Выходная папка";
             // 
+            // convertButton
+            // 
+            convertButton.Location = new Point(178, 95);
+            convertButton.Name = "convertButton";
+            convertButton.Size = new Size(159, 38);
+            convertButton.TabIndex = 13;
+            convertButton.Text = "Конвертировать";
+            convertButton.UseVisualStyleBackColor = true;
+            convertButton.Click += convertButton_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(convertButton);
             Controls.Add(label2);
             Controls.Add(label1);
-            Controls.Add(button4);
-            Controls.Add(button3);
-            Controls.Add(richTextBox3);
-            Controls.Add(richTextBox2);
-            Controls.Add(richTextBox1);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
-            Controls.Add(button1);
+            Controls.Add(outputButton);
+            Controls.Add(inputButton);
+            Controls.Add(textBoxResult);
+            Controls.Add(textBoxOriginal);
+            Controls.Add(textBoxFolder);
+            Controls.Add(outputText);
+            Controls.Add(inputText);
+            Controls.Add(readButton);
             Name = "Form1";
-            Text = "Form1";
+            Text = "1c-mt-100";
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private Button button1;
-        private TextBox textBox1;
-        private TextBox textBox2;
-        private RichTextBox richTextBox1;
-        private RichTextBox richTextBox2;
-        private RichTextBox richTextBox3;
-        private Button button3;
-        private Button button4;
+        private Button readButton;
+        private TextBox inputText;
+        private TextBox outputText;
+        private RichTextBox textBoxFolder;
+        private RichTextBox textBoxOriginal;
+        private RichTextBox textBoxResult;
+        private Button inputButton;
+        private Button outputButton;
         private Label label1;
         private Label label2;
+        private FolderBrowserDialog folderBrowserDialog1;
+        private FolderBrowserDialog folderBrowserDialog2;
+        private FolderBrowserDialog folderBrowserDialog3;
+        private FolderBrowserDialog folderBrowserDialog4;
+        private Button convertButton;
     }
 }
