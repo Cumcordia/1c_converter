@@ -11,7 +11,7 @@ namespace WinFormsApp1
             InitializeComponent();
         }
 
-        private void Timer1_Tick()
+        private void MainMethod()
         {
             const int TagsCount = 30;
             string[,] Tags = new string[2, TagsCount];
@@ -19,20 +19,20 @@ namespace WinFormsApp1
 
             string put = inputText.Text;
 
-            textBoxResult.Clear();
+            textBoxFolder.Clear();
             string[] files = Directory.GetFiles(put, "*.txt");
             foreach (string file in files)
             {
-                textBoxResult.AppendText(Path.GetFileName(file) + Environment.NewLine);
+                textBoxFolder.AppendText(Path.GetFileName(file) + Environment.NewLine);
             }
 
-            for (int load = 0; load < textBoxResult.Lines.Length; load++)
+            for (int load = 0; load < textBoxFolder.Lines.Length; load++)
             {
-                if (string.IsNullOrEmpty(textBoxResult.Lines[load]))
+                if (string.IsNullOrEmpty(textBoxFolder.Lines[load]))
                     break;
 
                 textBoxOriginal.Clear();
-                textBoxOriginal.Lines = File.ReadAllLines(put + textBoxResult.Lines[load]);
+                textBoxOriginal.Lines = File.ReadAllLines(put + textBoxFolder.Lines[load]);
 
                 Tags[0, 0] = "{1:F01K055640000000000000000}";
                 Tags[1, 0] = "СЕКЦИЯДОКУМЕНТ";
@@ -128,14 +128,14 @@ namespace WinFormsApp1
                             CurLine = Tags[0, j] + Values[j, i];
 
                         if (CurLine.Length > 0)
-                            textBoxOriginal.AppendText(CurLine + Environment.NewLine);
+                            textBoxResult.AppendText(CurLine + Environment.NewLine);
                     }
 
-                    if (textBoxOriginal.Lines[0].Length > 0)
+                    if (textBoxResult.Lines[0].Length > 0)
                     {
                         string fileName = put + "kik" + (i + 1).ToString() + textBoxResult.Lines[load].Substring(0, textBoxResult.Lines[load].Length - 4) + ".mt";
-                        File.WriteAllLines(fileName, textBoxOriginal.Lines);
-                        textBoxOriginal.Clear();
+                        File.WriteAllLines(fileName, textBoxResult.Lines);
+                        textBoxResult.Clear();
                     }
                 }
                 //File.Delete(put + textBoxResult.Lines[load]);
@@ -174,7 +174,7 @@ namespace WinFormsApp1
 
             private void convertButton_Click(object sender, EventArgs e)
             {
-                Timer1_Tick();
+                MainMethod();
             }
         }
     }

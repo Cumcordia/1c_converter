@@ -51,7 +51,7 @@
             readButton.Name = "readButton";
             readButton.Size = new Size(159, 38);
             readButton.TabIndex = 2;
-            readButton.Text = "Прочитать папку";
+            readButton.Text = "Прочитать входную папку";
             readButton.UseVisualStyleBackColor = true;
             readButton.Click += readButton_Click;
             // 
