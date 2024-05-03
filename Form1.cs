@@ -13,13 +13,12 @@ namespace WinFormsApp1
 
         private void MainMethod()
         {
-            const int TagsCount = 30;
+            const int TagsCount = 26;
             string[,] Tags = new string[2, TagsCount];
             string[,] Values = new string[TagsCount, 1000];
 
             string put = inputText.Text;
 
-            textBoxFolder.Clear();
             string[] files = Directory.GetFiles(put, "*.txt");
             foreach (string file in files)
             {
@@ -32,58 +31,33 @@ namespace WinFormsApp1
                     break;
 
                 textBoxOriginal.Clear();
-                textBoxOriginal.Lines = File.ReadAllLines(put + textBoxFolder.Lines[load]);
+                textBoxOriginal.Lines = File.ReadAllLines(put + "\\" + textBoxFolder.Lines[load]);
 
-                Tags[0, 0] = "{1:F01K055640000000000000000}";
-                Tags[1, 0] = "СЕКЦИЯДОКУМЕНТ";
-                Tags[0, 1] = "{2:O1000000000000SGROSS00000000000000000000000000U}";
-                Tags[1, 1] = "";
-                Tags[0, 2] = "{4:";
-                Tags[1, 2] = "";
-                Tags[0, 3] = ":20:";
-                Tags[1, 3] = "";
-                Tags[0, 4] = ":32A:";
-                Tags[1, 4] = "ДАТАДОКУМЕНТА";
-                Tags[0, 5] = ":50:/D/";
-                Tags[1, 5] = "ПЛАТЕЛЬЩИКИК";
-                Tags[0, 6] = "/NAME/";
-                Tags[1, 6] = "ПЛАТЕЛЬЩИКНАИМЕНОВАНИЕ";
-                Tags[0, 7] = "/IDN/";
-                Tags[1, 7] = "ПЛАТЕЛЬЩИКБИН_ИИН";
-                Tags[0, 8] = "/CHIEF/";
-                Tags[1, 8] = "";
-                Tags[0, 9] = "/IRS/";
-                Tags[1, 9] = "ПЛАТЕЛЬЩИККБЕ";
-                Tags[0, 10] = "/SECO/";
-                Tags[1, 10] = "ПОЛУЧАТЕЛЬКБЕ";
-                Tags[0, 11] = ":52B:";
-                Tags[1, 11] = "ПЛАТЕЛЬЩИКБАНКБИК";
-                Tags[0, 12] = ":57B:";
-                Tags[1, 12] = "ПОЛУЧАТЕЛЬБАНКБИК";
-                Tags[0, 13] = ":59:";
-                Tags[1, 13] = "ПОЛУЧАТЕЛЬИИК";
-                Tags[0, 14] = "/NAME/";
-                Tags[1, 14] = "ПОЛУЧАТЕЛЬНАИМЕНОВАНИЕ";
-                Tags[0, 15] = "/IDN/";
-                Tags[1, 15] = "ПОЛУЧАТЕЛЬБИН_ИИН";
-                Tags[0, 16] = "/IRS/";
-                Tags[1, 16] = "ПОЛУЧАТЕЛЬКБЕ";
-                Tags[0, 17] = "/SECO/";
-                Tags[1, 17] = "ПОЛУЧАТЕЛЬКБЕ";
-                Tags[0, 18] = ":70:/NUM/";
-                Tags[1, 18] = "НОМЕРДОКУМЕНТА";
-                Tags[0, 19] = "/DATE/";
-                Tags[1, 19] = "ДАТАДОКУМЕНТА";
-                Tags[0, 20] = "/KNP/";
-                Tags[1, 20] = "КОДНАЗНАЧЕНИЯПЛАТЕЖА";
-                Tags[0, 21] = "/ASSIGN/";
-                Tags[1, 21] = "НАЗНАЧЕНИЕПЛАТЕЖА";
-                Tags[0, 22] = "-}";
-                Tags[1, 22] = "КОНЕЦДОКУМЕНТА";
-                Tags[0, 24] = "";
-                Tags[1, 24] = "СУММАРАСХОД";
-                Tags[0, 25] = "";
-                Tags[1, 25] = "СУММАПРИХОД";
+                Tags[0, 0] = "{1:F01K055640000000000000000}";                            Tags[1, 0] = "СЕКЦИЯДОКУМЕНТ";
+                Tags[0, 1] = "{2:O1000000000000SGROSS00000000000000000000000000U}";      Tags[1, 1] = "";
+                Tags[0, 2] = "{4:";                                                      Tags[1, 2] = "";
+                Tags[0, 3] = ":20:";                                                     Tags[1, 3] = "";
+                Tags[0, 4] = ":32A:";                                                   Tags[1, 4] = "ДАТАДОКУМЕНТА";
+                Tags[0, 5] = ":50:/D/";                Tags[1, 5] = "ПЛАТЕЛЬЩИКИК";
+                Tags[0, 6] = "/NAME/";                 Tags[1, 6] = "ПЛАТЕЛЬЩИКНАИМЕНОВАНИЕ";
+                Tags[0, 7] = "/IDN/";                  Tags[1, 7] = "ПЛАТЕЛЬЩИКБИН_ИИН";
+                Tags[0, 8] = "/CHIEF/";                Tags[1, 8] = "";
+                Tags[0, 9] = "/IRS/";                  Tags[1, 9] = "ПЛАТЕЛЬЩИККБЕ";
+                Tags[0, 10] = "/SECO/";                Tags[1, 10] = "ПОЛУЧАТЕЛЬКБЕ";
+                Tags[0, 11] = ":52B:";                 Tags[1, 11] = "ПЛАТЕЛЬЩИКБАНКБИК";
+                Tags[0, 12] = ":57B:";                 Tags[1, 12] = "ПОЛУЧАТЕЛЬБАНКБИК";
+                Tags[0, 13] = ":59:";                  Tags[1, 13] = "ПОЛУЧАТЕЛЬИИК";
+                Tags[0, 14] = "/NAME/";                Tags[1, 14] = "ПОЛУЧАТЕЛЬНАИМЕНОВАНИЕ";
+                Tags[0, 15] = "/IDN/";                 Tags[1, 15] = "ПОЛУЧАТЕЛЬБИН_ИИН";
+                Tags[0, 16] = "/IRS/";                 Tags[1, 16] = "ПОЛУЧАТЕЛЬКБЕ";
+                Tags[0, 17] = "/SECO/";                Tags[1, 17] = "ПОЛУЧАТЕЛЬКБЕ";
+                Tags[0, 18] = ":70:/NUM/";             Tags[1, 18] = "НОМЕРДОКУМЕНТА";
+                Tags[0, 19] = "/DATE/";                Tags[1, 19] = "ДАТАДОКУМЕНТА";
+                Tags[0, 20] = "/KNP/";                 Tags[1, 20] = "КОДНАЗНАЧЕНИЯПЛАТЕЖА";
+                Tags[0, 21] = "/ASSIGN/";              Tags[1, 21] = "НАЗНАЧЕНИЕПЛАТЕЖА";
+                Tags[0, 22] = "-}";                    Tags[1, 22] = "КОНЕЦДОКУМЕНТА";
+                Tags[0, 24] = "";                      Tags[1, 24] = "СУММАРАСХОД";
+                Tags[0, 25] = "";                      Tags[1, 25] = "СУММАПРИХОД";
 
 
                 int CurPD = 0;
@@ -98,7 +72,7 @@ namespace WinFormsApp1
                     for (j = 0; j < TagsCount; j++)
                     {
                         if (CurLineUpper.Contains(Tags[1, j]))
-                            Values[j, CurPD] = CurLine.Substring(Tags[1, j].Length + 1);
+                            Values[j, CurPD] = CurLine.Substring(Tags[1, j].Length);
                     }
                 }
 

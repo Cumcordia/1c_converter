@@ -7,8 +7,13 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WinFormsApp1", "WinFormsApp
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Элементы решения", "Элементы решения", "{C383A196-7A11-48A8-A852-EE6D814E69E0}"
 	ProjectSection(SolutionItems) = preProject
-		appsettings.json = appsettings.json
 		test.cs = test.cs
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Data", "Data", "{D3860E12-3222-44D5-80AB-0C50DFD4E999}"
+	ProjectSection(SolutionItems) = preProject
+		ApplicationDbContext.cs = ApplicationDbContext.cs
+		DataModel.cs = DataModel.cs
 	EndProjectSection
 EndProject
 Global
