@@ -61,7 +61,7 @@
             inputText.Name = "inputText";
             inputText.Size = new Size(239, 23);
             inputText.TabIndex = 4;
-            inputText.Text = "C:\\";
+            inputText.Text = "C:\\Users\\praktikant_dikt\\Desktop\\in";
             // 
             // outputText
             // 
