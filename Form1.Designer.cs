@@ -1,6 +1,6 @@
 ﻿namespace WinFormsApp1
 {
-    partial class Form1
+    public partial class Form1
     {
         /// <summary>
         ///  Required designer variable.
@@ -101,7 +101,6 @@
             inputButton.Name = "inputButton";
             inputButton.Size = new Size(25, 23);
             inputButton.TabIndex = 9;
-            inputButton.Text = "Конвертировать";
             inputButton.UseVisualStyleBackColor = true;
             inputButton.Click += inputButton_Click;
             // 
@@ -111,7 +110,6 @@
             outputButton.Name = "outputButton";
             outputButton.Size = new Size(25, 23);
             outputButton.TabIndex = 10;
-            outputButton.Text = "Конвертировать";
             outputButton.UseVisualStyleBackColor = true;
             outputButton.Click += outputButton_Click;
             // 
@@ -170,9 +168,6 @@
         private Button readButton;
         private TextBox inputText;
         private TextBox outputText;
-        private RichTextBox textBoxFolder;
-        private RichTextBox textBoxOriginal;
-        private RichTextBox textBoxResult;
         private Button inputButton;
         private Button outputButton;
         private Label label1;
@@ -182,5 +177,8 @@
         private FolderBrowserDialog folderBrowserDialog3;
         private FolderBrowserDialog folderBrowserDialog4;
         private Button convertButton;
+        public RichTextBox textBoxFolder;
+        public RichTextBox textBoxOriginal;
+        public RichTextBox textBoxResult;
     }
 }

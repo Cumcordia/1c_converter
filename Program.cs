@@ -7,6 +7,7 @@ namespace WinFormsApp1
         [STAThread]
         static void Main()
         {
+            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
             ApplicationConfiguration.Initialize();
             Application.Run(new Form1());
 
