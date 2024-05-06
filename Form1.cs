@@ -71,10 +71,11 @@ namespace WinFormsApp1
                 int j = 0;
                     for (j = 0; j < 25; j++)
                     {
-                        if (CurLineUpper.IndexOf(Tags[1, j]) == 0)
+                        if (CurLineUpper.Contains(Tags[1, j]) == true)
                         {
                             int startIndex = CurLineUpper.IndexOf(Tags[1, j]) + Tags[1, j].Length + 1;
-                            Values[j, CurPD] = CurLine.Substring(startIndex);
+                            //найти значение вместо 10, чтобы до конца читала
+                            Values[j, CurPD] = CurLine.Substring(startIndex,10);
                         }
                     }
 
