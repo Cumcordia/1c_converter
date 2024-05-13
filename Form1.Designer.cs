@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            readButton = new Button();
             inputText = new TextBox();
             outputText = new TextBox();
             textBoxFolder = new RichTextBox();
@@ -45,16 +44,6 @@
             convertButton = new Button();
             SuspendLayout();
             // 
-            // readButton
-            // 
-            readButton.Location = new Point(12, 95);
-            readButton.Name = "readButton";
-            readButton.Size = new Size(159, 38);
-            readButton.TabIndex = 2;
-            readButton.Text = "Прочитать входную папку";
-            readButton.UseVisualStyleBackColor = true;
-            readButton.Click += readButton_Click;
-            // 
             // inputText
             // 
             inputText.Location = new Point(12, 19);
@@ -69,7 +58,7 @@
             outputText.Name = "outputText";
             outputText.Size = new Size(239, 23);
             outputText.TabIndex = 5;
-            outputText.Text = "C:\\";
+            outputText.Text = "C:\\Users\\praktikant_dikt\\Desktop\\out";
             // 
             // textBoxFolder
             // 
@@ -133,7 +122,7 @@
             // 
             // convertButton
             // 
-            convertButton.Location = new Point(178, 95);
+            convertButton.Location = new Point(12, 91);
             convertButton.Name = "convertButton";
             convertButton.Size = new Size(159, 38);
             convertButton.TabIndex = 13;
@@ -156,7 +145,6 @@
             Controls.Add(textBoxFolder);
             Controls.Add(outputText);
             Controls.Add(inputText);
-            Controls.Add(readButton);
             Name = "Form1";
             Text = "1c-mt-100";
             ResumeLayout(false);
@@ -164,8 +152,6 @@
         }
 
         #endregion
-
-        private Button readButton;
         private TextBox inputText;
         private TextBox outputText;
         private Button inputButton;
@@ -180,5 +166,6 @@
         public RichTextBox textBoxFolder;
         public RichTextBox textBoxOriginal;
         public RichTextBox textBoxResult;
+        public RichTextBox test1;
     }
 }

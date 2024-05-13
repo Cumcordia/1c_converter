@@ -13,9 +13,9 @@ namespace WinFormsApp1
         }
         private void MainMethod()
         {
-            const int TagsCount = 30;
+            const int TagsCount = 25;
             string[,] Tags = new string[2, TagsCount];
-            string[,] Values = new string[TagsCount, 100];
+            string[,] Values = new string[TagsCount, 1000];
 
             string put = inputText.Text;
 
@@ -61,26 +61,31 @@ namespace WinFormsApp1
 
 
                 int CurPD = 0;
-                
+
                 for (int i = 0; i < textBoxOriginal.Lines.Length; i++)
                 {
-                    string CurLine = textBoxOriginal.Lines[i];
-                    string CurLineUpper = CurLine.ToUpper();
-                    if (CurLineUpper.Contains(Tags[1, 0]))
-                        CurPD++;
-                int j = 0;
-                    for (j = 0; j < 25; j++)
+                    string curLine = textBoxOriginal.Lines[i];
+                    string curLineUpper = curLine.ToUpper();
+
+                    if (curLineUpper.Contains(Tags[1, 0]))
                     {
-                        if (CurLineUpper.Contains(Tags[1, j]))
-                        {
-                            int startIndex = CurLineUpper.IndexOf(Tags[1, j]) + Tags[1, j].Length;
-                            Values[j, CurPD] = CurLine.Substring(startIndex);
-                        }
+                        CurPD++;
                     }
 
+                    for (int j = 0; j < Tags.GetLength(1); j++)
+                    {
+                        if (curLineUpper.Contains(Tags[1, j]))
+                        {
+                            int startIndex = curLineUpper.IndexOf(Tags[1, j]) + Tags[1, j].Length;
+                            string value = curLine.Substring(startIndex);
+
+                            Values[j, CurPD] = value;
+                            
+                        }
+                    }
                 }
 
-                textBoxOriginal.Clear();
+                //textBoxOriginal.Clear();
                 for (int i = 0; i < CurPD; i++)
                 {
                     for (int j = 0; j < TagsCount; j++)
@@ -134,17 +139,6 @@ namespace WinFormsApp1
             if (dialogOut == DialogResult.OK)
             {
                 outputText.Text = folderBrowserDialog4.SelectedPath;
-            }
-        }
-
-        private void readButton_Click(object sender, EventArgs e)
-        {
-            string[] files = Directory.GetFiles(inputText.Text, "*.txt");
-
-            textBoxFolder.Clear();
-            foreach (string file in files)
-            {
-                textBoxFolder.AppendText(Path.GetFileName(file) + "\r\n");
             }
         }
 
