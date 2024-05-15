@@ -28,7 +28,10 @@ namespace WinFormsApp1
             for (int load = 0; load < textBoxFolder.Lines.Length; load++)
             {
                 textBoxOriginal.Clear();
+                string vInputFile = textBoxFolder.Lines[0];
                 textBoxOriginal.Lines = File.ReadAllLines(put + "\\" + textBoxFolder.Lines[load]);
+
+                Datasend(vInputFile);
 
                 Tags[0, 0] = "{1:F01K055640000000000000000}";                           Tags[1, 0] = "СЕКЦИЯДОКУМЕНТ";
                 Tags[0, 1] = "{2:O1000000000000SGROSS00000000000000000000000000U}";     Tags[1, 1] = "";
@@ -80,11 +83,15 @@ namespace WinFormsApp1
                             string value = curLine.Substring(startIndex);
 
                             Values[j, CurPD] = value;
+/*                            string res = string.Join("\r\n", value);
+                            MessageBox.Show(res);*/
+
                         }
                     }
                 }
 
-                textBoxOriginal.Clear();
+
+                //textBoxOriginal.Clear();
                 for (int i = 0; i < CurPD; i++)
                 {
                     for (int j = 0; j < TagsCount; j++)
@@ -92,7 +99,7 @@ namespace WinFormsApp1
                         string CurLine;
 
                         if (j == 4)
-                            CurLine = Tags[0, j] + Values[4, i].Substring(8, 2) + Values[4, i].Substring(3, 2) + Values[4, i].Substring(0, 2) + Values[5, i].Substring(11, 9);
+                            CurLine = Tags[0, j] + Values[19, 2].Substring(2) + Values[4, i].Substring(3, 2) + Values[4, i].Substring(0, 2) + Values[5, i].Substring(11, 9);
                         else if (j == 5)
                             CurLine = Tags[0, j] + Values[j, i].Substring(8, 2) + Values[j, i].Substring(3, 2) + Values[j, i].Substring(0, 2) + "KZT" + Values[24, i] + Values[25, i];
                         else if (j == 9)
@@ -122,6 +129,16 @@ namespace WinFormsApp1
                 File.Delete(put + "\\" + textBoxFolder.Lines[load]);
             }
         }
+
+        public static void Datasend(string vinputFile)
+        {
+            using (var context = new ApplicationContext())
+            {
+                var NewDate = new DataModel { ConvertDateAndTime = DateTime.Now, FileOriginalName = vinputFile, FileConvertedName = "" };
+                context.DataModel.Add(NewDate);
+                context.SaveChanges();
+            }
+        }
         private void inputButton_Click(object sender, EventArgs e)
         {
             DialogResult dialogIn = folderBrowserDialog1.ShowDialog();
@@ -143,7 +160,6 @@ namespace WinFormsApp1
         private void convertButton_Click(object sender, EventArgs e)
         {
             MainMethod();
-            DataSend.Datasend();
         }
     }
 }
