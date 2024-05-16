@@ -29,7 +29,7 @@ namespace WinFormsApp1
             for (int load = 0; load < textBoxFolder.Lines.Length; load++)
             {
                 textBoxOriginal.Clear();
-                string vInputFile = textBoxFolder.Lines[0];
+                string vInputFile = textBoxFolder.Lines[load];
                 try 
                 {
                     textBoxOriginal.Lines = File.ReadAllLines(put + "\\" + textBoxFolder.Lines[load]);
@@ -105,52 +105,52 @@ namespace WinFormsApp1
                     for (int j = 0; j < 24; j++)
                     {
                         string CurLine;
-                        if (j == 2)
+                        if (j == 2 && i != 0)
                             CurLine = Tags[0, 1];
-                        else if (j == 3)
+                        else if (j == 3 && i != 0)
                             CurLine = Tags[0, 2];
-                        else if (j == 4)
-                            CurLine = Tags[0, 3] + Values[19, 2].Substring(1) + Values[4, 2].Substring(9, 2) + Values[4, 2].Substring(4, 2) + Values[4, 2].Substring(1, 2);
-                        else if (j == 5)
-                            CurLine = Tags[0, 4] + Values[4, 2].Substring(9, 2) + Values[4, 2].Substring(4, 2) + Values[4, 2].Substring(1, 2) + "KZT" + Values[26, 2].Substring(1);
-                        else if (j == 6)
-                            CurLine = Tags[0, 5] + Values[5, 2].Substring(1);
-                        else if (j == 7)
-                            CurLine = Tags[0, 6] + Values[6, 2].Substring(1);
-                        else if (j == 8)
-                            CurLine = Tags[0, 7] + Values[7, 2].Substring(1);
-                        else if (j == 9)
+                        else if (j == 4 && i != 0)
+                            CurLine = Tags[0, 3] + Values[19, i].Substring(1) + Values[4, i].Substring(9, 2) + Values[4, i].Substring(4, 2) + Values[4, i].Substring(1, 2);
+                        else if (j == 5 && i != 0)
+                            CurLine = Tags[0, 4] + Values[4, i].Substring(9, 2) + Values[4, i].Substring(4, 2) + Values[4, i].Substring(1, 2) + "KZT" + Values[26, i].Substring(1);
+                        else if (j == 6 && i != 0)
+                            CurLine = Tags[0, 5] + Values[5, i].Substring(1);
+                        else if (j == 7 && i != 0)
+                            CurLine = Tags[0, 6] + Values[6, i].Substring(1);
+                        else if (j == 8 && i != 0)
+                            CurLine = Tags[0, 7] + Values[7, i].Substring(1);
+                        else if (j == 9 && i != 0)
                             CurLine = Tags[0, 8];
-                        else if (j == 10)
+                        else if (j == 10 && i != 0)
                             CurLine = Tags[0, 9];
-                        else if (j == 11)
-                            CurLine = Tags[0, 10] + Values[10, 2].Substring(1);
-                        else if (j == 12)
+                        else if (j == 11 && i != 0)
+                            CurLine = Tags[0, 10] + Values[10, i].Substring(1);
+                        else if (j == 12 && i != 0)
                             //исправить
-                            CurLine = Tags[0, 11] + Values[10, 2].Substring(1);
-                        else if (j == 13)
-                            CurLine = Tags[0, 12] + Values[12, 2].Substring(1);
-                        else if (j == 14)
-                            CurLine = Tags[0, 13] + Values[13, 2].Substring(1);
-                        else if (j == 15)
-                            CurLine = Tags[0, 14] + Values[14, 2].Substring(1);
-                        else if (j == 16)
-                            CurLine = Tags[0, 15] + Values[15, 2].Substring(1);
-                        else if (j == 17)
-                            CurLine = Tags[0, 16] + Values[16, 2].Substring(1);
-                        else if (j == 18)
-                            CurLine = Tags[0, 17] + Values[17, 2].Substring(1, 1);
-                        else if (j == 19)
-                            CurLine = Tags[0, 18] + Values[18, 2].Substring(2);
-                        else if (j == 20)
-                            CurLine = Tags[0, 19] + Values[19, 2].Substring(1);
-                        else if (j == 21)
-                            CurLine = Tags[0, 20] + Values[20, 2].Substring(9, 2) + Values[20, 2].Substring(4, 2) + Values[20, 2].Substring(1, 2);
-                        else if (j == 22)
-                            CurLine = Tags[0, 21] + Values[21, 2].Substring(1);
-                        else if (j == 23)
-                            CurLine = Tags[0, 22] + Values[22, 2].Substring(1);
-                        else if (j == 24)
+                            CurLine = Tags[0, 11] + Values[10, i].Substring(1);
+                        else if (j == 13 && i != 0)
+                            CurLine = Tags[0, 12] + Values[12, i].Substring(1);
+                        else if (j == 14 && i != 0)
+                            CurLine = Tags[0, 13] + Values[13, i].Substring(1);
+                        else if (j == 15 && i != 0)
+                            CurLine = Tags[0, 14] + Values[14, i].Substring(1);
+                        else if (j == 16 && i != 0)
+                            CurLine = Tags[0, 15] + Values[15, i].Substring(1);
+                        else if (j == 17 && i != 0)
+                            CurLine = Tags[0, 16] + Values[16, i].Substring(1);
+                        else if (j == 18 && i != 0)
+                            CurLine = Tags[0, 17] + Values[17, i].Substring(1, 1);
+                        else if (j == 19 && i != 0)
+                            CurLine = Tags[0, 18] + Values[18, i].Substring(2);
+                        else if (j == 20 && i != 0)
+                            CurLine = Tags[0, 19] + Values[19, i].Substring(1);
+                        else if (j == 21 && i != 0)
+                            CurLine = Tags[0, 20] + Values[20, i].Substring(9, 2) + Values[20, i].Substring(4, 2) + Values[20, i].Substring(1, 2);
+                        else if (j == 22 && i != 0)
+                            CurLine = Tags[0, 21] + Values[21, i].Substring(1);
+                        else if (j == 23 && i != 0)
+                            CurLine = Tags[0, 22] + Values[22, i].Substring(1);
+                        else if (j == 24 && i != 0)
                             CurLine = Tags[0, 23];
 
                         else
@@ -158,14 +158,16 @@ namespace WinFormsApp1
 
                         if (CurLine.Length > 0)
                             textBoxResult.AppendText(CurLine + Environment.NewLine);
+
+                        if (textBoxResult.Lines[0].Length > 0)
+                        {
+                            string fileName = put2 + "\\kik_" + textBoxFolder.Lines[load] + i + ".mt";
+                            File.WriteAllText(fileName, textBoxResult.Text);
+                            textBoxResult.Clear();
+                        }
                     }
 
-                    if (textBoxResult.Lines[0].Length > 0)
-                    {
-                        string fileName = put + "kik" + ".mt";
-                        File.WriteAllText(fileName, textBoxResult.Text);
-                        textBoxResult.Clear();
-                    }
+                    
                 }
                 File.Delete(put + "\\" + textBoxFolder.Lines[load]);
             }
