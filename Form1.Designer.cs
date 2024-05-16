@@ -48,7 +48,7 @@
             // 
             inputText.Location = new Point(12, 19);
             inputText.Name = "inputText";
-            inputText.Size = new Size(239, 23);
+            inputText.Size = new Size(426, 23);
             inputText.TabIndex = 4;
             inputText.Text = "C:\\Users\\praktikant_dikt\\Desktop\\in";
             // 
@@ -56,7 +56,7 @@
             // 
             outputText.Location = new Point(12, 48);
             outputText.Name = "outputText";
-            outputText.Size = new Size(239, 23);
+            outputText.Size = new Size(426, 23);
             outputText.TabIndex = 5;
             outputText.Text = "C:\\Users\\praktikant_dikt\\Desktop\\out";
             // 
@@ -64,29 +64,29 @@
             // 
             textBoxFolder.Location = new Point(12, 153);
             textBoxFolder.Name = "textBoxFolder";
-            textBoxFolder.Size = new Size(159, 285);
+            textBoxFolder.Size = new Size(159, 388);
             textBoxFolder.TabIndex = 6;
             textBoxFolder.Text = "";
             // 
             // textBoxOriginal
             // 
-            textBoxOriginal.Location = new Point(178, 153);
+            textBoxOriginal.Location = new Point(177, 153);
             textBoxOriginal.Name = "textBoxOriginal";
-            textBoxOriginal.Size = new Size(306, 285);
+            textBoxOriginal.Size = new Size(385, 388);
             textBoxOriginal.TabIndex = 7;
             textBoxOriginal.Text = "";
             // 
             // textBoxResult
             // 
-            textBoxResult.Location = new Point(490, 153);
+            textBoxResult.Location = new Point(568, 153);
             textBoxResult.Name = "textBoxResult";
-            textBoxResult.Size = new Size(298, 285);
+            textBoxResult.Size = new Size(396, 388);
             textBoxResult.TabIndex = 8;
             textBoxResult.Text = "";
             // 
             // inputButton
             // 
-            inputButton.Location = new Point(257, 19);
+            inputButton.Location = new Point(444, 18);
             inputButton.Name = "inputButton";
             inputButton.Size = new Size(25, 23);
             inputButton.TabIndex = 9;
@@ -95,7 +95,7 @@
             // 
             // outputButton
             // 
-            outputButton.Location = new Point(257, 48);
+            outputButton.Location = new Point(444, 47);
             outputButton.Name = "outputButton";
             outputButton.Size = new Size(25, 23);
             outputButton.TabIndex = 10;
@@ -105,7 +105,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(288, 23);
+            label1.Location = new Point(475, 22);
             label1.Name = "label1";
             label1.Size = new Size(87, 15);
             label1.TabIndex = 11;
@@ -114,7 +114,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(288, 51);
+            label2.Location = new Point(475, 50);
             label2.Name = "label2";
             label2.Size = new Size(96, 15);
             label2.TabIndex = 12;
@@ -134,7 +134,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(976, 553);
             Controls.Add(convertButton);
             Controls.Add(label2);
             Controls.Add(label1);

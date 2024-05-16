@@ -18,6 +18,7 @@ namespace WinFormsApp1
             string[,] Values = new string[TagsCount, 1000];
 
             string put = inputText.Text;
+            string put2 = outputText.Text;
 
             string[] files = Directory.GetFiles(put, "*.txt");
             foreach (string file in files)
@@ -29,7 +30,14 @@ namespace WinFormsApp1
             {
                 textBoxOriginal.Clear();
                 string vInputFile = textBoxFolder.Lines[0];
-                textBoxOriginal.Lines = File.ReadAllLines(put + "\\" + textBoxFolder.Lines[load]);
+                try 
+                {
+                    textBoxOriginal.Lines = File.ReadAllLines(put + "\\" + textBoxFolder.Lines[load]);
+                }
+                catch (Exception)
+                {
+                    break;
+                }
 
                 Datasend(vInputFile);
 
@@ -91,14 +99,17 @@ namespace WinFormsApp1
                 }
 
 
-                //textBoxOriginal.Clear();
+                textBoxOriginal.Clear();
                 for (int i = 0; i < CurPD; i++)
                 {
-                    for (int j = 0; j < TagsCount; j++)
+                    for (int j = 0; j < 24; j++)
                     {
                         string CurLine;
-
-                        if (j == 4)
+                        if (j == 2)
+                            CurLine = Tags[0, 1];
+                        else if (j == 3)
+                            CurLine = Tags[0, 2];
+                        else if (j == 4)
                             CurLine = Tags[0, 3] + Values[19, 2].Substring(1) + Values[4, 2].Substring(9, 2) + Values[4, 2].Substring(4, 2) + Values[4, 2].Substring(1, 2);
                         else if (j == 5)
                             CurLine = Tags[0, 4] + Values[4, 2].Substring(9, 2) + Values[4, 2].Substring(4, 2) + Values[4, 2].Substring(1, 2) + "KZT" + Values[26, 2].Substring(1);
@@ -109,9 +120,9 @@ namespace WinFormsApp1
                         else if (j == 8)
                             CurLine = Tags[0, 7] + Values[7, 2].Substring(1);
                         else if (j == 9)
-                            CurLine = Tags[0, 8] + Values[8, 2].Substring(1);
+                            CurLine = Tags[0, 8];
                         else if (j == 10)
-                            CurLine = Tags[0, 9] + Values[9, 2].Substring(1);
+                            CurLine = Tags[0, 9];
                         else if (j == 11)
                             CurLine = Tags[0, 10] + Values[10, 2].Substring(1);
                         else if (j == 12)
@@ -128,9 +139,9 @@ namespace WinFormsApp1
                         else if (j == 17)
                             CurLine = Tags[0, 16] + Values[16, 2].Substring(1);
                         else if (j == 18)
-                            CurLine = Tags[0, 17] + Values[17, 2].Substring(1);
+                            CurLine = Tags[0, 17] + Values[17, 2].Substring(1, 1);
                         else if (j == 19)
-                            CurLine = Tags[0, 18] + Values[18, 2].Substring(1);
+                            CurLine = Tags[0, 18] + Values[18, 2].Substring(2);
                         else if (j == 20)
                             CurLine = Tags[0, 19] + Values[19, 2].Substring(1);
                         else if (j == 21)
@@ -151,12 +162,12 @@ namespace WinFormsApp1
 
                     if (textBoxResult.Lines[0].Length > 0)
                     {
-                        string fileName = put + "kik" + (i + 1).ToString() + textBoxResult.Lines[load].Substring(0, textBoxResult.Lines[load].Length - 4) + ".mt";
-                        File.WriteAllLines(fileName, textBoxResult.Lines);
+                        string fileName = put + "kik" + ".mt";
+                        File.WriteAllText(fileName, textBoxResult.Text);
                         textBoxResult.Clear();
                     }
                 }
-                //File.Delete(put + "\\" + textBoxFolder.Lines[load]);
+                File.Delete(put + "\\" + textBoxFolder.Lines[load]);
             }
         }
 
