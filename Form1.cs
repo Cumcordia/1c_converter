@@ -99,19 +99,49 @@ namespace WinFormsApp1
                         string CurLine;
 
                         if (j == 4)
-                            CurLine = Tags[0, j] + Values[19, 2].Substring(2) + Values[4, i].Substring(3, 2) + Values[4, i].Substring(0, 2) + Values[5, i].Substring(11, 9);
+                            CurLine = Tags[0, 3] + Values[19, 2].Substring(1) + Values[4, 2].Substring(9, 2) + Values[4, 2].Substring(4, 2) + Values[4, 2].Substring(1, 2);
                         else if (j == 5)
-                            CurLine = Tags[0, j] + Values[j, i].Substring(8, 2) + Values[j, i].Substring(3, 2) + Values[j, i].Substring(0, 2) + "KZT" + Values[24, i] + Values[25, i];
+                            CurLine = Tags[0, 4] + Values[4, 2].Substring(9, 2) + Values[4, 2].Substring(4, 2) + Values[4, 2].Substring(1, 2) + "KZT" + Values[26, 2].Substring(1);
+                        else if (j == 6)
+                            CurLine = Tags[0, 5] + Values[5, 2].Substring(1);
+                        else if (j == 7)
+                            CurLine = Tags[0, 6] + Values[6, 2].Substring(1);
+                        else if (j == 8)
+                            CurLine = Tags[0, 7] + Values[7, 2].Substring(1);
                         else if (j == 9)
-                            CurLine = Tags[0, j] + Values[j, i].Substring(0, 1);
+                            CurLine = Tags[0, 8] + Values[8, 2].Substring(1);
                         else if (j == 10)
-                            CurLine = Tags[0, j] + Values[j, i].Substring(1, 1);
+                            CurLine = Tags[0, 9] + Values[9, 2].Substring(1);
+                        else if (j == 11)
+                            CurLine = Tags[0, 10] + Values[10, 2].Substring(1);
+                        else if (j == 12)
+                            //исправить
+                            CurLine = Tags[0, 11] + Values[10, 2].Substring(1);
+                        else if (j == 13)
+                            CurLine = Tags[0, 12] + Values[12, 2].Substring(1);
+                        else if (j == 14)
+                            CurLine = Tags[0, 13] + Values[13, 2].Substring(1);
+                        else if (j == 15)
+                            CurLine = Tags[0, 14] + Values[14, 2].Substring(1);
                         else if (j == 16)
-                            CurLine = Tags[0, j] + Values[j, i].Substring(0, 1);
+                            CurLine = Tags[0, 15] + Values[15, 2].Substring(1);
                         else if (j == 17)
-                            CurLine = Tags[0, j] + Values[j, i].Substring(1, 1);
+                            CurLine = Tags[0, 16] + Values[16, 2].Substring(1);
                         else if (j == 18)
-                            CurLine = Tags[0, j] + Values[j, i].Substring(8, 2) + Values[j, i].Substring(3, 2) + Values[j, i].Substring(0, 2);
+                            CurLine = Tags[0, 17] + Values[17, 2].Substring(1);
+                        else if (j == 19)
+                            CurLine = Tags[0, 18] + Values[18, 2].Substring(1);
+                        else if (j == 20)
+                            CurLine = Tags[0, 19] + Values[19, 2].Substring(1);
+                        else if (j == 21)
+                            CurLine = Tags[0, 20] + Values[20, 2].Substring(9, 2) + Values[20, 2].Substring(4, 2) + Values[20, 2].Substring(1, 2);
+                        else if (j == 22)
+                            CurLine = Tags[0, 21] + Values[21, 2].Substring(1);
+                        else if (j == 23)
+                            CurLine = Tags[0, 22] + Values[22, 2].Substring(1);
+                        else if (j == 24)
+                            CurLine = Tags[0, 23];
+
                         else
                             CurLine = Tags[0, j] + Values[j, i];
 
@@ -126,7 +156,7 @@ namespace WinFormsApp1
                         textBoxResult.Clear();
                     }
                 }
-                File.Delete(put + "\\" + textBoxFolder.Lines[load]);
+                //File.Delete(put + "\\" + textBoxFolder.Lines[load]);
             }
         }
 
