@@ -159,15 +159,15 @@ namespace WinFormsApp1
                         if (CurLine.Length > 0)
                             textBoxResult.AppendText(CurLine + Environment.NewLine);
 
-                        if (textBoxResult.Lines[0].Length > 0)
-                        {
-                            string fileName = put2 + "\\kik_" + textBoxFolder.Lines[load] + i + ".mt";
-                            File.WriteAllText(fileName, textBoxResult.Text);
-                            textBoxResult.Clear();
-                        }
+
                     }
 
-                    
+                    if (textBoxResult.Lines[0].Length > 0)
+                    {
+                        string fileName = put2 + "\\kik_" + textBoxFolder.Lines[load] + i + ".mt";
+                        File.WriteAllText(fileName, textBoxResult.Text);
+                        textBoxResult.Clear();
+                    }
                 }
                 File.Delete(put + "\\" + textBoxFolder.Lines[load]);
             }
