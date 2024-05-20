@@ -9,7 +9,7 @@ namespace WinFormsApp1
         {
             AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
             ApplicationConfiguration.Initialize();
-            Application.Run(new Form1());
+            Application.Run(new FormMain());
 
             var connectionString = "Host=localhost;Port=5432;Database=postgres;Username=postgres;Password=123";
             NpgsqlConnection npgSqlConnection = new NpgsqlConnection(connectionString);

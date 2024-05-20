@@ -1,4 +1,3 @@
-C:\Users\praktikant_dikt\Desktop\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.Form1.resources
 C:\Users\praktikant_dikt\Desktop\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.csproj.GenerateResource.cache
 C:\Users\praktikant_dikt\Desktop\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.GeneratedMSBuildEditorConfig.editorconfig
 C:\Users\praktikant_dikt\Desktop\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.AssemblyInfoInputs.cache
@@ -98,3 +97,6 @@ C:\Users\praktikant_dikt\Desktop\WinFormsApp1\bin\Debug\net8.0-windows\ru\Micros
 C:\Users\praktikant_dikt\Desktop\WinFormsApp1\bin\Debug\net8.0-windows\tr\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\praktikant_dikt\Desktop\WinFormsApp1\bin\Debug\net8.0-windows\zh-Hans\Microsoft.CodeAnalysis.Workspaces.resources.dll
 C:\Users\praktikant_dikt\Desktop\WinFormsApp1\bin\Debug\net8.0-windows\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
+C:\Users\praktikant_dikt\Desktop\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.FormMain.resources
+C:\Users\praktikant_dikt\Desktop\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.FormAbout.resources
+C:\Users\praktikant_dikt\Desktop\WinFormsApp1\obj\Debug\net8.0-windows\WinFormsApp1.FormHistory.resources
