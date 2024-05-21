@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Npgsql;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -9,26 +10,101 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static System.Windows.Forms.DataFormats;
+using System.Data.SqlClient;
 
 namespace WinFormsApp1
 {
     public partial class FormHistory : Form
     {
+        private DataTable DataTable = new DataTable();
+        private string connectionString = "Host=localhost;Port=5432;Database=postgres;Username=postgres;Password=123";
+
         public FormHistory()
         {
             InitializeComponent();
         }
 
-        public void MainHistoryMethod()
+        private void Form1_Load(object sender, EventArgs e)
         {
+            InitializeDataTable();
+            LoadDataFromDatabase();
+            InitializeDateTimePicker();
+        }
 
+        private void InitializeDataTable()
+        {
+            DataTable.Columns.Add("Id");
+            DataTable.Columns.Add("Дата");
+            DataTable.Columns.Add("Оригинальное название");
+            DataTable.Columns.Add("Название после конвертации");
+            dataGridView1.DataSource = DataTable;
+
+            //dataGridView1.Sort(dataGridView1.Columns["Дата"], System.ComponentModel.ListSortDirection.Descending);
+        }
+
+        private void LoadDataFromDatabase()
+        {
+            try
+            {
+                DataTable.Clear();
+
+                using (NpgsqlConnection connection = new NpgsqlConnection(connectionString))
+                {
+                    connection.Open();
+
+                    string query = "SELECT * FROM \"DataModel\"";
+
+                    using (NpgsqlCommand command = new NpgsqlCommand(query, connection))
+                    using (NpgsqlDataReader reader = command.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            int Id = reader.GetInt32(0);
+                            DateTime ConvertDateAndTime = reader.GetDateTime(1);
+                            string FileOriginalName = reader.GetString(2);
+                            string FileConvertedName = reader.GetString(3);
+                            DataTable.Rows.Add(Id, ConvertDateAndTime, FileOriginalName, FileConvertedName);
+                        }
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ошибка: {ex.Message}");
+            }
+        }
+
+        private void InitializeDateTimePicker()
+        {
+            DateStart.ValueChanged += new EventHandler(DateTimePicker1_ValueChanged);
+        }
+
+        private void DateTimePicker1_ValueChanged(object sender, EventArgs e)
+        {
+            DateTime selectedDate = DateStart.Value.Date;
+
+            using (NpgsqlConnection conn = new NpgsqlConnection(connectionString))
+            {
+                conn.Open();
+                string query = "SELECT * FROM \"DataModel\" WHERE date_trunc('day', \"ConvertDateAndTime\") = @selectedDate";
+                using (NpgsqlCommand cmd = new NpgsqlCommand(query, conn))
+                {
+                    cmd.Parameters.AddWithValue("@selectedDate", selectedDate);
+
+                    NpgsqlDataAdapter da = new NpgsqlDataAdapter(cmd);
+                    DataTable dt = new DataTable();
+                    da.Fill(dt);
+
+                    dataGridView1.DataSource = dt;
+                }
+            }
         }
 
         private void Form1_FormClosed(object sender, FormClosedEventArgs e)
         {
+            //исправить в будущем
             FormMain formMain = new FormMain();
             formMain.Show();
         }
-
     }
 }

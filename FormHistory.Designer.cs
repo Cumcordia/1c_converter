@@ -28,55 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Form1_FormClosed);
-
             components = new System.ComponentModel.Container();
-            DataGridView = new DataGridView();
-            idDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            convertDateAndTimeDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            fileOriginalNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
-            fileConvertedNameDataGridViewTextBoxColumn = new DataGridViewTextBoxColumn();
             dataModelBindingSource = new BindingSource(components);
             DateStart = new DateTimePicker();
             DateEnd = new DateTimePicker();
-            ((System.ComponentModel.ISupportInitialize)DataGridView).BeginInit();
+            dataGridView1 = new DataGridView();
             ((System.ComponentModel.ISupportInitialize)dataModelBindingSource).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
-            // 
-            // DataGridView
-            // 
-            DataGridView.AutoGenerateColumns = false;
-            DataGridView.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            DataGridView.Columns.AddRange(new DataGridViewColumn[] { idDataGridViewTextBoxColumn, convertDateAndTimeDataGridViewTextBoxColumn, fileOriginalNameDataGridViewTextBoxColumn, fileConvertedNameDataGridViewTextBoxColumn });
-            DataGridView.DataSource = dataModelBindingSource;
-            DataGridView.Location = new Point(57, 94);
-            DataGridView.Name = "DataGridView";
-            DataGridView.Size = new Size(871, 416);
-            DataGridView.TabIndex = 0;
-            // 
-            // idDataGridViewTextBoxColumn
-            // 
-            idDataGridViewTextBoxColumn.DataPropertyName = "Id";
-            idDataGridViewTextBoxColumn.HeaderText = "Id";
-            idDataGridViewTextBoxColumn.Name = "idDataGridViewTextBoxColumn";
-            // 
-            // convertDateAndTimeDataGridViewTextBoxColumn
-            // 
-            convertDateAndTimeDataGridViewTextBoxColumn.DataPropertyName = "ConvertDateAndTime";
-            convertDateAndTimeDataGridViewTextBoxColumn.HeaderText = "ConvertDateAndTime";
-            convertDateAndTimeDataGridViewTextBoxColumn.Name = "convertDateAndTimeDataGridViewTextBoxColumn";
-            // 
-            // fileOriginalNameDataGridViewTextBoxColumn
-            // 
-            fileOriginalNameDataGridViewTextBoxColumn.DataPropertyName = "FileOriginalName";
-            fileOriginalNameDataGridViewTextBoxColumn.HeaderText = "FileOriginalName";
-            fileOriginalNameDataGridViewTextBoxColumn.Name = "fileOriginalNameDataGridViewTextBoxColumn";
-            // 
-            // fileConvertedNameDataGridViewTextBoxColumn
-            // 
-            fileConvertedNameDataGridViewTextBoxColumn.DataPropertyName = "FileConvertedName";
-            fileConvertedNameDataGridViewTextBoxColumn.HeaderText = "FileConvertedName";
-            fileConvertedNameDataGridViewTextBoxColumn.Name = "fileConvertedNameDataGridViewTextBoxColumn";
             // 
             // dataModelBindingSource
             // 
@@ -96,30 +55,35 @@
             DateEnd.Size = new Size(227, 23);
             DateEnd.TabIndex = 2;
             // 
+            // dataGridView1
+            // 
+            dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridView1.Location = new Point(57, 95);
+            dataGridView1.Name = "dataGridView1";
+            dataGridView1.Size = new Size(857, 421);
+            dataGridView1.TabIndex = 3;
+            // 
             // FormHistory
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(984, 561);
+            Controls.Add(dataGridView1);
             Controls.Add(DateEnd);
             Controls.Add(DateStart);
-            Controls.Add(DataGridView);
             Name = "FormHistory";
             Text = "Form1";
-            ((System.ComponentModel.ISupportInitialize)DataGridView).EndInit();
+            Load += Form1_Load;
+            FormClosed += Form1_FormClosed;
             ((System.ComponentModel.ISupportInitialize)dataModelBindingSource).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
         }
 
         #endregion
-
-        private DataGridView DataGridView;
-        private DataGridViewTextBoxColumn idDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn convertDateAndTimeDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn fileOriginalNameDataGridViewTextBoxColumn;
-        private DataGridViewTextBoxColumn fileConvertedNameDataGridViewTextBoxColumn;
         private BindingSource dataModelBindingSource;
         private DateTimePicker DateStart;
         private DateTimePicker DateEnd;
+        private DataGridView dataGridView1;
     }
 }
