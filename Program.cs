@@ -17,6 +17,8 @@ namespace WinFormsApp1
             npgSqlConnection.Open();
         }
 
+
+
         /*static bool TableExists(NpgsqlConnection conn, string tableName)
         {
             using (var cmd = new NpgsqlCommand())

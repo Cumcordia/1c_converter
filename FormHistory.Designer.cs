@@ -31,8 +31,8 @@
             components = new System.ComponentModel.Container();
             dataModelBindingSource = new BindingSource(components);
             DateStart = new DateTimePicker();
-            DateEnd = new DateTimePicker();
             dataGridView1 = new DataGridView();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)dataModelBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -48,33 +48,37 @@
             DateStart.Size = new Size(227, 23);
             DateStart.TabIndex = 1;
             // 
-            // DateEnd
-            // 
-            DateEnd.Location = new Point(339, 39);
-            DateEnd.Name = "DateEnd";
-            DateEnd.Size = new Size(227, 23);
-            DateEnd.TabIndex = 2;
-            // 
             // dataGridView1
             // 
+            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new Point(57, 95);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.Size = new Size(857, 421);
             dataGridView1.TabIndex = 3;
             // 
+            // button1
+            // 
+            button1.Location = new Point(545, 41);
+            button1.Name = "button1";
+            button1.Size = new Size(75, 23);
+            button1.TabIndex = 4;
+            button1.Text = "button1";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // FormHistory
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(984, 561);
+            Controls.Add(button1);
             Controls.Add(dataGridView1);
-            Controls.Add(DateEnd);
             Controls.Add(DateStart);
             Name = "FormHistory";
             Text = "Form1";
-            Load += Form1_Load;
             FormClosed += Form1_FormClosed;
+            Load += Form1_Load;
             ((System.ComponentModel.ISupportInitialize)dataModelBindingSource).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);
@@ -83,7 +87,7 @@
         #endregion
         private BindingSource dataModelBindingSource;
         private DateTimePicker DateStart;
-        private DateTimePicker DateEnd;
         private DataGridView dataGridView1;
+        private Button button1;
     }
 }

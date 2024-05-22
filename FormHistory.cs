@@ -106,5 +106,31 @@ namespace WinFormsApp1
             FormMain formMain = new FormMain();
             formMain.Show();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            string connString = "Host=localhost;Port=5432;Database=postgres;Username=postgres;Password=123";
+            string outputDirectory = @"C:\Users\praktikant_dikt\Desktop\dd";
+
+            using (var conn = new NpgsqlConnection(connString))
+            {
+                conn.Open();
+
+                using (var cmd = new NpgsqlCommand("SELECT filename, filedata FROM files", conn))
+                {
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            string filename = reader.GetString(0);
+                            byte[] fileData = (byte[])reader["filedata"];
+
+                            string outputPath = Path.Combine(outputDirectory, filename);
+                            File.WriteAllBytes(outputPath, fileData);
+                        }
+                    }
+                }
+            }
+        }
     }
 }

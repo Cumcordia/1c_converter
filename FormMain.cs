@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Npgsql;
+using System;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Windows.Forms;
@@ -12,6 +13,7 @@ namespace WinFormsApp1
         {
             InitializeComponent();
         }
+
         private void MainMethod()
         {
             const int TagsCount = 27;
@@ -40,7 +42,7 @@ namespace WinFormsApp1
                     break;
                 }
 
-                Datasend(vInputFile);
+                Datasend(vInputFile, put);
 
                 Tags[0, 0] = "{1:F01K055640000000000000000}"; Tags[1, 0] = "СЕКЦИЯДОКУМЕНТ";
                 Tags[0, 1] = "{2:O1000000000000SGROSS00000000000000000000000000U}"; Tags[1, 1] = "";
@@ -112,7 +114,6 @@ namespace WinFormsApp1
                         else if (j == 8 && i != 0)
                             CurLine = Tags[0, 7] + Values[7, i].Substring(1);
                         else if (j == 9 && i != 0)
-                            //исправмть
                             CurLine = Tags[0, 8];
                         else if (j == 10 && i != 0)
                             CurLine = Tags[0, 9];
@@ -163,7 +164,7 @@ namespace WinFormsApp1
             }
         }
 
-        public static void Datasend(string vinputFile)
+        public static void Datasend(string vinputFile, string put)
         {
             using (var context = new ApplicationContext())
             {
@@ -171,7 +172,29 @@ namespace WinFormsApp1
                 context.DataModel.Add(NewDate);
                 context.SaveChanges();
             }
+
+            string connString = "Host=localhost;Port=5432;Database=postgres;Username=postgres;Password=123";
+            string directoryPath = put;
+            string[] filePaths = Directory.GetFiles(directoryPath, "*.txt");
+            using (var conn = new NpgsqlConnection(connString))
+            {
+                conn.Open();
+
+                foreach (var filePath in filePaths)
+                {
+                    byte[] fileData = File.ReadAllBytes(filePath);
+                    string fileName = Path.GetFileName(filePath);
+
+                    using (var cmd = new NpgsqlCommand("INSERT INTO files (filename, filedata) VALUES (@filename, @filedata)", conn))
+                    {
+                        cmd.Parameters.AddWithValue("filename", fileName);
+                        cmd.Parameters.AddWithValue("filedata", fileData);
+                        cmd.ExecuteNonQuery();
+                    }
+                }
+            }
         }
+
         private void inputButton_Click(object sender, EventArgs e)
         {
             DialogResult dialogIn = folderBrowserDialog1.ShowDialog();
@@ -180,6 +203,7 @@ namespace WinFormsApp1
                 inputText.Text = folderBrowserDialog1.SelectedPath;
             }
         }
+
         private void outputButton_Click(object sender, EventArgs e)
         {
             DialogResult dialogOut = folderBrowserDialog4.ShowDialog();
@@ -188,6 +212,7 @@ namespace WinFormsApp1
                 outputText.Text = folderBrowserDialog4.SelectedPath;
             }
         }
+
         private void convertButton_Click(object sender, EventArgs e)
         {
             MainMethod();
@@ -210,5 +235,7 @@ namespace WinFormsApp1
             FormHistory frmHistory = new FormHistory();
             frmHistory.Show();
         }
+
+
     }
 }
