@@ -100,17 +100,16 @@ namespace WinFormsApp1
             }
         }
 
-        private void Form1_FormClosed(object sender, FormClosedEventArgs e)
-        {
-            //исправить в будущем
-            FormMain formMain = new FormMain();
-            formMain.Show();
-        }
-
         private void button1_Click(object sender, EventArgs e)
         {
-            string connString = "Host=localhost;Port=5432;Database=postgres;Username=postgres;Password=123";
-            string outputDirectory = @"C:\Users\praktikant_dikt\Desktop\dd";
+            DialogResult dialogOut = folderBrowserDialogHistory.ShowDialog();
+            if (dialogOut == DialogResult.OK)
+            {
+                outputTextHistory.Text = folderBrowserDialogHistory.SelectedPath;
+            }
+
+            string connString = connectionString;
+            string outputDirectory = outputTextHistory.Text;
 
             using (var conn = new NpgsqlConnection(connString))
             {
@@ -131,6 +130,45 @@ namespace WinFormsApp1
                     }
                 }
             }
+        }
+
+
+        /*private void button1_Click(object sender, EventArgs e)
+        {
+            DateTime dateStart = DateStart.Value.Date;
+            string outputDirectory = outputTextHistory.Text + "\\";
+            string connString = connectionString;
+
+            using (var conn = new NpgsqlConnection(connString))
+            {
+                conn.Open();
+
+                using (var cmd = new NpgsqlCommand("SELECT filename, filedata FROM files WHERE upload_date = @dateStart", conn))
+                {
+                    cmd.Parameters.AddWithValue("dateStart", NpgsqlTypes.NpgsqlDbType.Timestamp, dateStart);
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        while (reader.Read())
+                        {
+                            string filename = reader.GetString(0);
+                            byte[] fileData = (byte[])reader["filedata"];
+
+                            string outputPath = Path.Combine(outputDirectory, filename);
+                            File.WriteAllBytes(outputPath, fileData);
+                        }
+                    }
+                }
+            }
+            MessageBox.Show("Файлы успешно загружены.");
+        }*/
+
+
+        private void BackButton_Click(object sender, EventArgs e)
+        {
+            Hide();
+            FormMain formMain = new FormMain();
+            formMain.Show();
         }
     }
 }

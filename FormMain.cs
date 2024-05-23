@@ -168,14 +168,13 @@ namespace WinFormsApp1
         {
             using (var context = new ApplicationContext())
             {
-                var NewDate = new DataModel { ConvertDateAndTime = DateTime.Now, FileOriginalName = vinputFile, FileConvertedName = "" };
+                var NewDate = new DataModel { ConvertDateAndTime = DateTime.Now.Date, FileOriginalName = vinputFile, FileConvertedName = "" };
                 context.DataModel.Add(NewDate);
                 context.SaveChanges();
             }
 
             string connString = "Host=localhost;Port=5432;Database=postgres;Username=postgres;Password=123";
-            string directoryPath = put;
-            string[] filePaths = Directory.GetFiles(directoryPath, "*.txt");
+            string[] filePaths = Directory.GetFiles(put, "*.txt");
             using (var conn = new NpgsqlConnection(connString))
             {
                 conn.Open();
