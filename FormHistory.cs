@@ -19,11 +19,22 @@ namespace WinFormsApp1
         private DataTable DataTable = new DataTable();
         private string connectionString = "Host=localhost;Port=5432;Database=postgres;Username=postgres;Password=123";
 
+        //инициализация формы
         public FormHistory()
         {
             InitializeComponent();
+
+            DateStart.CustomFormat = "dd/MM/yyyy";
+            DateStart.Format = DateTimePickerFormat.Custom;
+            DateStart.Value = System.DateTime.Now;
+
+            DateTime.CustomFormat = "HH:mm";
+            DateTime.ShowUpDown = true;
+            DateTime.Format = DateTimePickerFormat.Custom;
+            DateTime.Value = System.DateTime.Now;
         }
 
+        //инициализация методов
         private void Form1_Load(object sender, EventArgs e)
         {
             InitializeDataTable();
@@ -31,17 +42,17 @@ namespace WinFormsApp1
             InitializeDateTimePicker();
         }
 
+        //иницализация таблицы
         private void InitializeDataTable()
         {
-            DataTable.Columns.Add("Id");
+            //DataTable.Columns.Add("Id");
             DataTable.Columns.Add("Дата");
             DataTable.Columns.Add("Оригинальное название");
             DataTable.Columns.Add("Название после конвертации");
             dataGridView1.DataSource = DataTable;
-
-            //dataGridView1.Sort(dataGridView1.Columns["Дата"], System.ComponentModel.ListSortDirection.Descending);
         }
 
+        //загрузка таблицы из бд в datatable
         private void LoadDataFromDatabase()
         {
             try
@@ -74,22 +85,30 @@ namespace WinFormsApp1
             }
         }
 
+        //инициализация ивента изменения datetimepicker
         private void InitializeDateTimePicker()
         {
             DateStart.ValueChanged += new EventHandler(DateTimePicker1_ValueChanged);
         }
 
+        //действия при ивенте изменения datetimepicker
         private void DateTimePicker1_ValueChanged(object sender, EventArgs e)
         {
             DateTime selectedDate = DateStart.Value.Date;
+            TimeSpan selectedTime = DateTime.Value.TimeOfDay;
 
             using (NpgsqlConnection conn = new NpgsqlConnection(connectionString))
             {
                 conn.Open();
-                string query = "SELECT * FROM \"DataModel\" WHERE date_trunc('day', \"ConvertDateAndTime\") = @selectedDate";
+                string query = "SELECT " +
+                    "convertdateandtime AS Дата, fileoriginalname AS \"Оригинальное название\", fileconvertedname AS \"Название после конвертации\" " +
+                    "FROM \"DataModel\" " +
+                    "WHERE date_trunc('day', convertdateandtime) = date_trunc('day', @selectedDate::timestamp) " +
+                    "AND date_trunc('minute', convertdateandtime) = date_trunc('minute', @selectedTime::timestamp)";
                 using (NpgsqlCommand cmd = new NpgsqlCommand(query, conn))
                 {
                     cmd.Parameters.AddWithValue("@selectedDate", selectedDate);
+                    cmd.Parameters.AddWithValue("@selectedTime", selectedTime);
 
                     NpgsqlDataAdapter da = new NpgsqlDataAdapter(cmd);
                     DataTable dt = new DataTable();
@@ -100,6 +119,7 @@ namespace WinFormsApp1
             }
         }
 
+        //кнопка загрузки файлов
         private void button1_Click(object sender, EventArgs e)
         {
             DialogResult dialogOut = folderBrowserDialogHistory.ShowDialog();
@@ -115,7 +135,7 @@ namespace WinFormsApp1
             {
                 conn.Open();
 
-                using (var cmd = new NpgsqlCommand("SELECT filename, filedata FROM files", conn))
+                using (var cmd = new NpgsqlCommand("SELECT filename, filedata FROM \"DataModel\"", conn))
                 {
                     using (var reader = cmd.ExecuteReader())
                     {
@@ -132,38 +152,7 @@ namespace WinFormsApp1
             }
         }
 
-
-        /*private void button1_Click(object sender, EventArgs e)
-        {
-            DateTime dateStart = DateStart.Value.Date;
-            string outputDirectory = outputTextHistory.Text + "\\";
-            string connString = connectionString;
-
-            using (var conn = new NpgsqlConnection(connString))
-            {
-                conn.Open();
-
-                using (var cmd = new NpgsqlCommand("SELECT filename, filedata FROM files WHERE upload_date = @dateStart", conn))
-                {
-                    cmd.Parameters.AddWithValue("dateStart", NpgsqlTypes.NpgsqlDbType.Timestamp, dateStart);
-
-                    using (var reader = cmd.ExecuteReader())
-                    {
-                        while (reader.Read())
-                        {
-                            string filename = reader.GetString(0);
-                            byte[] fileData = (byte[])reader["filedata"];
-
-                            string outputPath = Path.Combine(outputDirectory, filename);
-                            File.WriteAllBytes(outputPath, fileData);
-                        }
-                    }
-                }
-            }
-            MessageBox.Show("Файлы успешно загружены.");
-        }*/
-
-
+        //кнопка назад
         private void BackButton_Click(object sender, EventArgs e)
         {
             Hide();

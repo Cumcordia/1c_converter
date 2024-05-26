@@ -7,7 +7,7 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace WinFormsApp1.Migrations
 {
     /// <inheritdoc />
-    public partial class Initial : Migration
+    public partial class InitialCreate : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -18,9 +18,12 @@ namespace WinFormsApp1.Migrations
                 {
                     Id = table.Column<int>(type: "integer", nullable: false)
                         .Annotation("Npgsql:ValueGenerationStrategy", NpgsqlValueGenerationStrategy.IdentityByDefaultColumn),
-                    ConvertDateAndTime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
-                    FileOriginalName = table.Column<string>(type: "text", nullable: false),
-                    FileConvertedName = table.Column<string>(type: "text", nullable: false)
+                    convertdateandtime = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    fileoriginalname = table.Column<string>(type: "text", nullable: false),
+                    fileconvertedname = table.Column<string>(type: "text", nullable: false),
+                    upload_date = table.Column<DateTime>(type: "timestamp with time zone", nullable: false),
+                    filename = table.Column<string>(type: "text", nullable: false),
+                    filedata = table.Column<byte[]>(type: "bytea", nullable: false)
                 },
                 constraints: table =>
                 {
