@@ -1,0 +1,7 @@
+C:\Users\praktikant_dikt\Desktop\dd\WinFormsApp1.pdb
+C:\Users\praktikant_dikt\Desktop\dd\D3DCompiler_47_cor3.dll
+C:\Users\praktikant_dikt\Desktop\dd\PenImc_cor3.dll
+C:\Users\praktikant_dikt\Desktop\dd\PresentationNative_cor3.dll
+C:\Users\praktikant_dikt\Desktop\dd\vcruntime140_cor3.dll
+C:\Users\praktikant_dikt\Desktop\dd\wpfgfx_cor3.dll
+C:\Users\praktikant_dikt\Desktop\dd\WinFormsApp1.exe
