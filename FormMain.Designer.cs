@@ -35,8 +35,6 @@
             textBoxResult = new RichTextBox();
             inputButton = new Button();
             outputButton = new Button();
-            label1 = new Label();
-            label2 = new Label();
             folderBrowserDialog1 = new FolderBrowserDialog();
             folderBrowserDialog2 = new FolderBrowserDialog();
             folderBrowserDialog3 = new FolderBrowserDialog();
@@ -94,8 +92,9 @@
             // 
             inputButton.Location = new Point(444, 26);
             inputButton.Name = "inputButton";
-            inputButton.Size = new Size(25, 23);
+            inputButton.Size = new Size(118, 23);
             inputButton.TabIndex = 9;
+            inputButton.Text = "Входная папка";
             inputButton.UseVisualStyleBackColor = true;
             inputButton.Click += inputButton_Click;
             // 
@@ -103,32 +102,15 @@
             // 
             outputButton.Location = new Point(444, 55);
             outputButton.Name = "outputButton";
-            outputButton.Size = new Size(25, 23);
+            outputButton.Size = new Size(118, 23);
             outputButton.TabIndex = 10;
+            outputButton.Text = "Выходная папка";
             outputButton.UseVisualStyleBackColor = true;
             outputButton.Click += outputButton_Click;
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(475, 30);
-            label1.Name = "label1";
-            label1.Size = new Size(87, 15);
-            label1.TabIndex = 11;
-            label1.Text = "Входная папка";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(475, 58);
-            label2.Name = "label2";
-            label2.Size = new Size(96, 15);
-            label2.TabIndex = 12;
-            label2.Text = "Выходная папка";
-            // 
             // convertButton
             // 
-            convertButton.Location = new Point(12, 91);
+            convertButton.Location = new Point(12, 96);
             convertButton.Name = "convertButton";
             convertButton.Size = new Size(159, 38);
             convertButton.TabIndex = 13;
@@ -179,8 +161,6 @@
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(984, 561);
             Controls.Add(convertButton);
-            Controls.Add(label2);
-            Controls.Add(label1);
             Controls.Add(outputButton);
             Controls.Add(inputButton);
             Controls.Add(textBoxResult);
@@ -202,8 +182,6 @@
         private TextBox outputText;
         private Button inputButton;
         private Button outputButton;
-        private Label label1;
-        private Label label2;
         private FolderBrowserDialog folderBrowserDialog1;
         private FolderBrowserDialog folderBrowserDialog2;
         private FolderBrowserDialog folderBrowserDialog3;

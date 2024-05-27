@@ -9,11 +9,13 @@ namespace WinFormsApp1
 {
     public partial class FormMain : Form
     {
+        //инициализация формы
         public FormMain()
         {
             InitializeComponent();
         }
 
+        //основной метод
         private void MainMethod()
         {
             const int TagsCount = 27;
@@ -164,15 +166,9 @@ namespace WinFormsApp1
             }
         }
 
+        //отправка данных конвертации в д
         public static void Datasend(string vinputFile, string put)
-        {
-            using (var context = new ApplicationContext())
-            {
-                var NewDate = new DataModel { ConvertDateAndTime = DateTime.Now.Date, FileOriginalName = vinputFile, FileConvertedName = "" };
-                context.DataModel.Add(NewDate);
-                context.SaveChanges();
-            }
-
+        {   
             string connString = "Host=localhost;Port=5432;Database=postgres;Username=postgres;Password=123";
             string[] filePaths = Directory.GetFiles(put, "*.txt");
             using (var conn = new NpgsqlConnection(connString))
@@ -184,16 +180,18 @@ namespace WinFormsApp1
                     byte[] fileData = File.ReadAllBytes(filePath);
                     string fileName = Path.GetFileName(filePath);
 
-                    using (var cmd = new NpgsqlCommand("INSERT INTO files (filename, filedata) VALUES (@filename, @filedata)", conn))
+                    using (var cmd = new NpgsqlCommand("INSERT INTO \"DataModel\" (filename, filedata, ConvertDateAndTime, FileOriginalName, FileConvertedName) VALUES (@filename, @filedata, date_trunc('minute', CURRENT_TIMESTAMP), @vinputFile, @vinputFile)", conn))
                     {
                         cmd.Parameters.AddWithValue("filename", fileName);
                         cmd.Parameters.AddWithValue("filedata", fileData);
+                        cmd.Parameters.AddWithValue("vinputFile", vinputFile);
                         cmd.ExecuteNonQuery();
                     }
                 }
             }
         }
 
+        //диалоговая кнопка
         private void inputButton_Click(object sender, EventArgs e)
         {
             DialogResult dialogIn = folderBrowserDialog1.ShowDialog();
@@ -203,6 +201,7 @@ namespace WinFormsApp1
             }
         }
 
+        //диалоговая кнопка
         private void outputButton_Click(object sender, EventArgs e)
         {
             DialogResult dialogOut = folderBrowserDialog4.ShowDialog();
@@ -212,29 +211,31 @@ namespace WinFormsApp1
             }
         }
 
+        //кнопка конвертации
         private void convertButton_Click(object sender, EventArgs e)
         {
             MainMethod();
         }
 
+        //кнопка меню выхода
         private void ExitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Application.Exit();
         }
 
+        //кнопка меню "о программе"
         private void AboutToolStripMenuItem_Click(object sender, EventArgs e)
         {
             FormAbout frmAbout = new FormAbout();
             frmAbout.Show();
         }
 
+        //кнопка меню истории
         private void HistoryToolStripMenuItem_Click_1(object sender, EventArgs e)
         {
             Hide();
             FormHistory frmHistory = new FormHistory();
             frmHistory.Show();
         }
-
-
     }
 }

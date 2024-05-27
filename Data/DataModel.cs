@@ -3,7 +3,9 @@
 public class DataModel
 {
     public int Id { get; set; }
-    public DateTime ConvertDateAndTime { get; set; }
-    public string FileOriginalName { get; set; }
-    public string FileConvertedName { get; set; }
+    public DateTime convertdateandtime { get; set; }
+    public string fileoriginalname { get; set; }
+    public string fileconvertedname { get; set; }
+    public string filename { get; set; }
+    public byte[] filedata { get; set; }
 }

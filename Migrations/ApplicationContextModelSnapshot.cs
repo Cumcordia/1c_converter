@@ -2,7 +2,6 @@
 using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 
@@ -11,11 +10,9 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace WinFormsApp1.Migrations
 {
     [DbContext(typeof(ApplicationContext))]
-    [Migration("20240504095800_Initial")]
-    partial class Initial
+    partial class ApplicationContextModelSnapshot : ModelSnapshot
     {
-        /// <inheritdoc />
-        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        protected override void BuildModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -32,14 +29,22 @@ namespace WinFormsApp1.Migrations
 
                     NpgsqlPropertyBuilderExtensions.UseIdentityByDefaultColumn(b.Property<int>("Id"));
 
-                    b.Property<DateTime>("ConvertDateAndTime")
+                    b.Property<DateTime>("convertdateandtime")
                         .HasColumnType("timestamp with time zone");
 
-                    b.Property<string>("FileConvertedName")
+                    b.Property<string>("fileconvertedname")
                         .IsRequired()
                         .HasColumnType("text");
 
-                    b.Property<string>("FileOriginalName")
+                    b.Property<byte[]>("filedata")
+                        .IsRequired()
+                        .HasColumnType("bytea");
+
+                    b.Property<string>("filename")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("fileoriginalname")
                         .IsRequired()
                         .HasColumnType("text");
 

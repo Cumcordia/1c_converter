@@ -38,6 +38,7 @@
             outputTextHistory = new TextBox();
             folderBrowserDialogHistory = new FolderBrowserDialog();
             label1 = new Label();
+            DateTime = new DateTimePicker();
             ((System.ComponentModel.ISupportInitialize)dataModelBindingSource).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
@@ -48,18 +49,20 @@
             // 
             // DateStart
             // 
+            DateStart.CustomFormat = "dd/MM/yyyy";
+            DateStart.Format = DateTimePickerFormat.Custom;
             DateStart.Location = new Point(12, 68);
             DateStart.Name = "DateStart";
-            DateStart.Size = new Size(227, 23);
+            DateStart.Size = new Size(100, 23);
             DateStart.TabIndex = 1;
             // 
             // dataGridView1
             // 
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(12, 199);
+            dataGridView1.Location = new Point(12, 188);
             dataGridView1.Name = "dataGridView1";
-            dataGridView1.Size = new Size(960, 350);
+            dataGridView1.Size = new Size(960, 361);
             dataGridView1.TabIndex = 3;
             // 
             // ExportButton
@@ -97,7 +100,7 @@
             outputTextHistory.Name = "outputTextHistory";
             outputTextHistory.Size = new Size(426, 23);
             outputTextHistory.TabIndex = 13;
-            outputTextHistory.Text = "C:\\Users\\praktikant_dikt\\Desktop\\out";
+            outputTextHistory.Text = "C:\\";
             // 
             // label1
             // 
@@ -108,11 +111,21 @@
             label1.TabIndex = 16;
             label1.Text = "Выберите дату";
             // 
+            // DateTime
+            // 
+            DateTime.CustomFormat = "HH:mm";
+            DateTime.Format = DateTimePickerFormat.Custom;
+            DateTime.Location = new Point(118, 68);
+            DateTime.Name = "DateTime";
+            DateTime.Size = new Size(70, 23);
+            DateTime.TabIndex = 17;
+            // 
             // FormHistory
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(984, 561);
+            Controls.Add(DateTime);
             Controls.Add(label1);
             Controls.Add(label2History);
             Controls.Add(outputTextHistory);
@@ -139,5 +152,6 @@
         private TextBox outputTextHistory;
         private FolderBrowserDialog folderBrowserDialogHistory;
         private Label label1;
+        private DateTimePicker DateTime;
     }
 }
